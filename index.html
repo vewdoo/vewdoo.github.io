@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <title>main</title>
+    <style>
+        body {
+            background-color: rgb(75, 87, 69); /* Set the background color of the entire website */
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(images/static.gif); /* Add your overlay image here */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* Adjust the opacity as needed */
+            z-index: 20; /* Ensure the overlay is above the background but below other content */
+            pointer-events: none; /* Allow clicks to pass through the overlay */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 100px;
+            position: relative;
+            z-index: 2; /* Ensure container is above the overlay */
+        }
+        .background-div, .another-background-div {
+            position: relative;
+            z-index: 2; /* Ensure divs are above the image */
+            background-size: cover;
+            background-position: center;
+            margin-top: 200px;
+        }
+        .background-div {
+            width: 440px;
+            height: 380px;
+            background-image: url(images/table.png);
+            margin-top: 290px;
+            margin-left: 370px;
+        }
+        .another-background-div {
+            width: 400px; /* Different width */
+            height: 500px; /* Different height */
+            background-image: url(images/cabinet.png);
+        }
+        .bottom-image {
+            position: absolute;
+            bottom: 0;
+            width: 590px;
+            height: 30px;
+            height: auto;
+            z-index: 1; /* Ensure image is below the divs */
+            top: 540px;
+        }
+        .clickable-image, .clickable-image-2, .clickable-image-3, .clickable-image-4, .clickable-image-5, .clickable-image-6, .clickable-image-7, .clickable-image-8 {
+            position: absolute;
+            transition: transform 0.3s ease; /* Add transition for smooth rotation */
+        }
+        .clickable-image:hover, .clickable-image-2:hover, .clickable-image-3:hover, .clickable-image-4:hover, .clickable-image-5:hover, .clickable-image-6:hover, .clickable-image-7:hover, .clickable-image-8:hover {
+            transform: rotate(-2deg); /* Rotate the image on hover */
+        }
+        .clickable-image {
+            top: 350px;
+            left: 200px;
+            width: 50%;
+            height: 35%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-2 {
+            left: 20px; /* Adjust as needed */
+            bottom: 200px;
+            width: 65%;
+            height: 45%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-3 {
+            top: 1px; /* Adjust as needed */
+            left: 250px; /* Adjust as needed */
+            width: 35%;
+            height: 40%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-4 {
+            top: 230px; /* Adjust as needed */
+            right: 70px; /* Adjust as needed */
+            width: 40%;
+            height: 35%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-5 {
+            top: 350px; /* Adjust as needed */
+            left: 5px; /* Adjust as needed */
+            width: 60%;
+            height: 50%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-6 {
+            right: 400px; /* Adjust as needed */
+            margin-bottom: 600px;            
+            width: 110%;
+            height: 130%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-7 {
+            top: 100px; /* Adjust as needed */
+            right: 340px; /* Adjust as needed */
+            width: 50%;
+            height: 100%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-8 {
+            top: 50px; /* Adjust as needed */
+            left: 100px; /* Adjust as needed */
+            width: 30%;
+            height: 15%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .hover-text {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 150px;
+            color: rgb(116, 223, 123);
+            text-shadow: 0 0 10px rgba(12, 75, 36, 0.76);
+            z-index: 10;
+            display: none;
+            margin-top: 100px;
+            font-family: 'Jersey 25', sans-serif;
+            padding: 20px; /* Adjust padding as needed */
+            border-radius: 10px; /* Optional: Add border radius for rounded corners */
+        }
+        .title-text {
+            font-size: 30px;
+            color: rgb(162, 211, 166);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Jersey 25', sans-serif;
+            text-align: center;
+            margin-top: 50px; /* Adjust this value to move the title-text lower */
+            z-index: 19;
+        }
+    </style>
+    <script>
+        function showHoverText(text) {
+            const hoverText = document.getElementById('hover-text');
+            hoverText.textContent = text;
+            hoverText.style.display = 'block';
+        }
+
+        function hideHoverText() {
+            const hoverText = document.getElementById('hover-text');
+            hoverText.style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="title-text" id="title-text">where do you go?</div>
+    <h1 style="text-align: center; font-family: 'Jersey 25', sans-serif; color: rgb(112, 165, 116); font-size: 10px;">(not mobile supported)</h1>
+    <div class="hover-text" id="hover-text"></div>
+    <div class="container">
+        <div class="background-div">
+            <a href="" onmouseover="showHoverText('GAMES')" onmouseout="hideHoverText()">
+                <img src="images/games.png" alt="Clickable Image" class="clickable-image">
+            </a>
+            <a href="" onmouseover="showHoverText('SHOWS')" onmouseout="hideHoverText()">
+                <img src="images/pc.png" alt="Another Clickable Image" class="clickable-image-2">
+            </a>
+            <a href="" onmouseover="showHoverText('ANIME')" onmouseout="hideHoverText()">
+                <img src="images/gundam.png" alt="Third Clickable Image" class="clickable-image-3">
+            </a>
+            <a href="" onmouseover="showHoverText('CAT')" onmouseout="hideHoverText()">
+                <img src="images/cat.png" alt="Fourth Clickable Image" class="clickable-image-4">
+            </a>
+            <a href="" onmouseover="showHoverText('ARCADE')" onmouseout="hideHoverText()">
+                <img src="images/arcade.png" alt="Sixth Clickable Image" class="clickable-image-6">
+            </a>
+            <a href="https://open.spotify.com/user/31js66x3sjbitxzsy2amdwlvwhey?si=9b476dc9258f4cf5" onmouseover="showHoverText('MUSIC')" onmouseout="hideHoverText()">
+                <img src="images/guitarlol.png" alt="Seventh Clickable Image" class="clickable-image-7">
+            </a>
+        </div>
+        <div class="another-background-div">
+            <a href="" onmouseover="showHoverText('PROFILE')" onmouseout="hideHoverText()">
+                <img src="images/bed.png" alt="Fifth Clickable Image" class="clickable-image-5">
+            </a>
+            <a href="" onmouseover="showHoverText('COMICS')" onmouseout="hideHoverText()">
+                <img src="images/comicbook.png" alt="Eighth Clickable Image" class="clickable-image-8">
+            </a>
+        </div>
+        <img src="images/carpet.png" alt="Bottom Image" class="bottom-image">
+    </div>
+</body>
+</html>
